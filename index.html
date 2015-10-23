@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title> Cell Phones and Internet Usage in the U.S. </title>
+	<link rel="stylesheet" href="styles/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"> </script>
+    <script src="js/highcharts.js"></script>
+	<script src="js/themes/dark-blue.js"></script>
+	<script src="js/modules/exporting.js"></script>
+	
+</head>
+<body>
+
+<header>
+<h1> How does cell phone usage correlate with Internet usage in the United States? </h1>
+</header>
+
+<p>There has been no shortage of innovations in technology in recent years, and it's safe to say that, as a society, we have become reliant on our electronic devices. Perhaps our most beloved piece of technology is our phones, which now seem capable of doing almost any task a desktop or laptop computer can. The most groundbreaking piece of smartphone tech was the debut of Apple's iPhone in 2007.</p>
+
+<div>
+<div id="container" style="width:50%; height:400px;"></div>
+
+<p> Source: <a href="http://databank.worldbank.org/data/reports.aspx?source=2&country=USA&series=&period=">The World Bank, World Development Indicators</a></p>
+</div>
+
+<p>Mobile phone subscriptions have jumped dramatically in the United States recently, with the biggest jump coming in 2007, presumably thanks to the iPhone. Phone subscriptions have grown so much that now the growth trend is starting to plateau, simply because almost everyone already has a cell phone plan.</p>
+
+<p>As phones with Internet access become more and more widespread, it could be assumed that Internet usage by Americans, as a whole, would follow a similar pattern. However, statistics show that the correlation between cell phone subscriptions and Internet usage is not totally aligned.</p>
+
+<div>
+<div id="container2" style="width:50%; height:400px;"></div>
+
+<p> Source: <a href="http://databank.worldbank.org/data/reports.aspx?source=2&country=USA&series=&period=">The World Bank, World Development Indicators</a></p>
+</div>
+
+<p>Internet usage has certainly grown since 2006, but the trend is not one of steady growth as seen with phone subscriptions. In fact, after a jump from 69% in 2006 to 75% in 2007, a valley formed and usage reached as low as 70% in 2011. One explanation may be the economic recession, which began to hit in 2008. As the economy recovers, Internet usage grows, and we have seen a large increase in online activity since 2012. But why would the economy negatively affect the Internet so dramatically while cell phone usage steadily grew during the same time? More research into the attitudes and actions of Americans may be needed to answer this.</p>
+
+<script>
+$(function () {
+    $('#container').highcharts({
+        title: {
+            text: 'Cell Phone Subscriptions in the U.S.',
+            x: -20 //center
+        },
+        subtitle: {
+            text: 'From 2006-2014',
+            x: -20
+        },
+        xAxis: {
+            categories: ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014']
+        },
+        yAxis: {
+            title: {
+                text: 'Percentage of Americans'
+            },
+            plotLines: [{
+                value: 0,
+                width: 1,
+                color: '#808080'
+            }]
+       
+        },
+        legend: {
+            layout: 'vertical',
+            align: 'right',
+            verticalAlign: 'middle',
+            borderWidth: 0
+        },
+        series: [{
+            name: 'Cell phone subscriptions',
+            data: [76, 82, 85, 89, 91, 94, 96, 97, 98]
+       
+        }]
+    });
+});
+
+$(function () {
+    $('#container2').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Internet Usage in the U.S.'
+        },
+        subtitle: {
+            text: 'From 2006-2014'
+        },
+        xAxis: {
+            categories: ['2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014'],
+            crosshair: true
+        },
+        yAxis: {
+            min: 50,
+            title: {
+                text: 'Percentage of Americans'
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+                '<td style="padding:0"><b>{point.y:.1f} %</b></td></tr>',
+            footerFormat: '</table>',
+            shared: true,
+            useHTML: true
+        },
+        plotOptions: {
+            column: {
+                pointPadding: 0.2,
+                borderWidth: 0
+            }
+        },
+        series: [{
+            name: 'Internet Usage',
+            data: [69, 75, 74, 71, 72, 70, 79, 84, 87]
+
+       
+        }]
+    });
+});
+</script> 
+
+<footer>
+<p>Page by Jonathan Arnholz.</p>
+</footer>
+
+</body>
+</html>
